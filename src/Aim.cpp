@@ -5,12 +5,15 @@ Aim::Aim ( QObject* parent ) : QObject ( parent )
 {
     connect ( &m_updateTimer, &QTimer::timeout, this, &Aim::updateTimer );
     m_updateTimer.setInterval ( 10 );
+
+    qRegisterMetaType<QPoint>();
+
+    m_puntos.push_back ( QPoint ( 0, 0 ) );
 }
 
-void Aim::initialize ( QQmlContext& qmlContext )
+void Aim::initialize ( const  unsigned int& nb_targets )
 {
-    qRegisterMetaType<QPoint>();
-    unsigned int nb_targets = 3;
+    m_puntos.clear();
 
     for ( unsigned int i = 0 ; i < nb_targets; ++i )
     {
@@ -20,9 +23,6 @@ void Aim::initialize ( QQmlContext& qmlContext )
     emit targetChanged();
 
     m_updateTimer.start();
-
-
-//    m_aimTimer.remainingTimeAsDuration();
 }
 
 QPoint Aim::target()

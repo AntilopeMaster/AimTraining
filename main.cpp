@@ -15,7 +15,7 @@ int main ( int argc, char* argv[] )
 
     QQmlApplicationEngine engine;
 
-    aim.initialize ( *engine.rootContext() );
+//    aim.initialize ( *engine.rootContext() );
 
     engine.rootContext()->setContextProperty ( "aim", &aim );
 

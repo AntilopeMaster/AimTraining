@@ -18,7 +18,7 @@ class Aim : public QObject
 public:
     explicit Aim ( QObject* parent = nullptr );
 
-    void initialize ( QQmlContext& qmlContext );
+    Q_INVOKABLE void initialize ( const unsigned int& nb_targets );
 
     QPoint target();
     Q_INVOKABLE void setNextTarget();
